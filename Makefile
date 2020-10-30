@@ -1,15 +1,5 @@
 all:final.elf
 
-<<<<<<< HEAD
-final.elf:1.o 2.o
-	gcc -o final.elf 1.o 2.o
-
-1.o:1.c
-	gcc -c -o 1.o 1.c
-
-2.0:2.c
-	gcc -c  -o 2.o 2.c
-=======
 final.elf:	1.o 2.o main.o
 	gcc -o final.elf 1.o 2.o main.o
 
@@ -21,7 +11,6 @@ final.elf:	1.o 2.o main.o
 
 main.o: main.c
 	gcc -o main.o -c main.c
->>>>>>> Junghwan/master
 
 clean:
 	rm -f *.o
