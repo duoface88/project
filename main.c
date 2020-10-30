@@ -1,8 +1,7 @@
 #include <stdio.h>
+#include "myProject.h"
 int main(){
-
-  //수정해봄
-  
-return 100;
-
+    pritnf("Chief name is [심정환]\n");
+    printfMyName1();
+    printfMyName2();
 }
