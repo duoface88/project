@@ -12,6 +12,7 @@ int ledLibExit(void); // 이 함수를 호출하면 led를 전부 끄고 driver�
 int ledLibRaw(char ledraw);
 // 이 함수를 호출하면 ledStatus에 맞게 8개의 led를 전부 제어한다.
 int ledLibBlink(int ledNumber, int nth, int msec); //1~8까지의 led를 하나 골라서 n번 깜빡이는데 주기가 msec
+int ledLibMorseBlink(int ledNumber, int nth, int msecON, int msecOFF); //1~8까지의 led를 하나 골라서 n번 깜빡이는데 주기가 msec
 
 #define LED_DRV_NODE "/dev/periled"
 
