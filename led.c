@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
-
+#include <stdlib.h>
 
 #include "led.h"
 
@@ -49,11 +49,15 @@ int ledLibRaw(char ledraw){
 }
 
 int ledLibBlink(int ledNumber, int nth, int msec){
+    ledLibMorseBlink(ledNumber, nth, msec, msec);
+}
+
+int ledLibMorseBlink(int ledNumber, int nth, int msecON, int msecOFF){
     int i = 0;
     for(i = 0; i < nth; i++){
-        ledLibOnOff(ledNumber, 1);
-        usleep(1000*msec);
-        ledLibOnOff(ledNumber, 0);
-        usleep(1000*msec);
+        ledLibOnOff(ledNumber, 1); // ON
+        usleep(1000*msecON);
+        ledLibOnOff(ledNumber, 0); // OFF
+        usleep(1000*msecOFF);
     }
 }
