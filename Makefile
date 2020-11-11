@@ -1,19 +1,21 @@
-CC	=	arm-linux-gnueabi-gcc
-AR	=	arm-linux-gnueabi-ar
+CC = arm-linux-gnueabi-gcc
+AR = arm-linux-gnueabi-ar
 
-all:	libMyPeri.a ledtest
-	
-libMyPeri.a:	led.o
+all: libMyPeri.a ledtest
+
+
+libMyPeri.a : led.o
 	$(AR) rc libMyPeri.a led.o
 
-led.o:	led.h led.c
+led.o :	led.h led.c
 	$(CC) led.c -o led.o -c
+ 
 
-ledtest:	ledtest.c led.h libMyPeri.a
-	$(CC) ledtest.c -o ledtest -l Myperi -L.
-	scp  -P30201 ledtest ecube@61.36.233.22:/home/ecube
+ledtest : 	ledtest.c led.h libMyPeri.a
+	$(CC) ledtest.c -o ledtest -l MyPeri -L.
+	scp ledtest ecube@192.168.219.147:/home/ecube
 
 clean:
-		rm *.o -rf
-		rm *.a -rf
-		rm ledtest -rf
+	rm *.o -rf
+	rm *.a -rf
+	rm ledtest -rf
