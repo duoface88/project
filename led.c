@@ -20,7 +20,7 @@ int ledLibInit(void){
 
 int ledLibOnOff(int ledNumber, int OnOff){
     int lamp = 1;
-    lamp << ledNumber; // 00010000 해당하는 led bit만 1로 바꿈
+    lamp = lamp << ledNumber; // 00010000 해당하는 led bit만 1로 바꿈
     ledStatus = (ledStatus & (~lamp)); // 해당하는 led bit만 0으로 바꿈
     if(OnOff) ledStatus = ledStatus | lamp; // 해당하는 led bit만 1로 바꾸고 나머지는 그대로
     ledLibRaw(ledStatus);
