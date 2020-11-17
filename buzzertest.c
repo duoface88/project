@@ -35,7 +35,7 @@ buzzerEnable(0);
 }
 else
 {
-	buzzerEnable(1);
+	/*buzzerEnable(1);
 	setFrequency(musicScale[1]);
 	usleep(1000*500);
 	setFrequency(musicScale[3]);
@@ -45,10 +45,10 @@ else
 	setFrequency(musicScale[7]);
 	usleep(1000*500);
 	setFrequency(musicScale[8]);
+	*/
 	
-	
-//setFrequency(musicScale[freIndex-1]);
-//buzzerEnable(1);
+setFrequency(musicScale[freIndex-1]);
+buzzerEnable(1);
 }
 return 0;
 }
