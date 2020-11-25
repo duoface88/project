@@ -1,11 +1,11 @@
 CC = arm-linux-gnueabi-gcc
 AR = arm-linux-gnueabi-ar
 
-all: libMyPeri.a lcdtexttest1
+all: libMyPeri.a colorledtest1
 
 
-libMyPeri.a:	 led.o button.o buzzer.o fnd.o lcdtext.o
-	$(AR) rc libMyPeri.a led.o button.o buzzer.o fnd.o lcdtext.o 
+libMyPeri.a:	 led.o button.o buzzer.o fnd.o lcdtext.o colorled.o
+	$(AR) rc libMyPeri.a led.o button.o buzzer.o fnd.o lcdtext.o colorled.o 
 
 led.o:	led.h led.c
 	$(CC) led.c -o led.o -c
@@ -22,9 +22,12 @@ fnd.o:	fnd.h fnd.c
 lcdtext.o:	lcdtext.h lcdtext.c
 	$(CC) lcdtext.c -o lcdtext.o -c
 
-lcdtexttest1:	lcdtexttest.c lcdtext.h libMyPeri.a
-	$(CC) lcdtexttest.c -o lcdtexttest1 -l MyPeri -L.
-	scp lcdtexttest1 ecube@192.168.219.121:/home/ecube 
+colorled.o:	colorled.h colorled.c
+	$(CC) colorled.c -o colorled.o -c
+
+colorledtest1:	colorledtest.c colorled.h libMyPeri.a
+	$(CC) colorledtest.c -o colorledtest1 -l MyPeri -L.
+	scp colorledtest1 ecube@192.168.219.121:/home/ecube 
 	
 
 clean:
@@ -32,3 +35,4 @@ clean:
 	rm *.a -rf
 	rm fndtest1 -rf
 	rm lcdtexttest1 -rf
+	rm colorledtest1 -rf
