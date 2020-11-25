@@ -16,13 +16,12 @@ int main(void){
     int i  = 0;
     for(i = 0; i < 8; i++){
         ledLibOnOff(i , 1);
-        pritnf("0x%02X--ok?\r\n", ledLibStatus());
         sleep(1);
         ledLibOnOff(i , 0);
         sleep(1);
     }
 
-    ledLiBlink(5, 10, 500);
+    ledLibBlink(5, 10, 500);
 
     ledLibMorseBlink(2, 3, 500, 500);
     ledLibMorseBlink(2, 3, 1500, 500);
@@ -31,3 +30,4 @@ int main(void){
     sleep(1);
     ledLibExit();
 }
+
