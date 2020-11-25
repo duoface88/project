@@ -29,7 +29,7 @@ stWriteData.DataNumeric[5] = num %10;
 fd = open(FND_DRIVER_NAME,O_RDWR);
 if ( fd < 0 )
 {
-perror("driver open error.\n");
+perror("driver open error1.\n");
 return 0;
 }
 write(fd, &stWriteData, sizeof(stFndWriteForm));
@@ -51,7 +51,7 @@ int fndOff()
    fd = open(FND_DRIVER_NAME,O_RDWR);
    if ( fd < 0 )
    {
-      perror("driver open error.\n");
+      perror("driver open error2.\n");
       return 0;
    }   
    write(fd,&stWriteData,sizeof(stFndWriteForm));
