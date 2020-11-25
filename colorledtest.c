@@ -15,9 +15,9 @@ printf ("ex) colorledtest.elf 100 100 100 ==> full white color\r\n");
 return 0;
  }*/
 pwmLedInit();
-pwmSetPercent(100,0);//R
+pwmSetPercent(30,0);//R
 pwmSetPercent(0,1);    //G  (빛성분몇퍼센트, 123중하나)
-pwmSetPercent(100,2);//B
+pwmSetPercent(30,2);//B
 pwmInactiveAll();
 return 0;
 }
