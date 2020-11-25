@@ -5,16 +5,6 @@
 
 #include "led.h"
 
-
-<<<<<<< HEAD
-int ledLibOnOff(int ledNumber, int OnOff){
-    int lamp = 1;
-    lamp = lamp << ledNumber; // 00010000 해당하는 led bit만 1로 바꿈
-    ledStatus = (ledStatus & (~lamp)); // 해당하는 led bit만 0으로 바꿈
-    if(OnOff) ledStatus = ledStatus | lamp; // 해당하는 led bit만 1로 바꾸고 나머지는 그대로
-    ledLibRaw(ledStatus);
-    return 1;
-=======
 static int fd =0;
 static int ledStatus=0;
 int ledLibInit(void) // 이라이브러리는 LED를 켜기전에 반드시 한번 불러주어야한다.
@@ -29,7 +19,7 @@ int ledLibInit(void) // 이라이브러리는 LED를 켜기전에 반드시 한�
 	ledStatus = 0;
 		ledLibRaw(ledStatus);//전부끔
 		return 1;
->>>>>>> 9685d36c4258e01d00abb9f853324d132dbf97a5
+
 }
 int ledLibOnOff(int ledNumber, int OnOff)
 //이 함수는 ledNumber에 0~7을 넣으면, 그에 해당하는 led를 켜거나 끄거나 해준다.
