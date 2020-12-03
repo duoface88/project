@@ -1,11 +1,11 @@
 CC = arm-linux-gnueabi-gcc
 AR = arm-linux-gnueabi-ar
 
-all: libMyPeri.a temptest1
+all: libMyPeri.a accelMagGyrotest1
 
 
-libMyPeri.a:	 led.o button.o buzzer.o fnd.o lcdtext.o colorled.o temp.o
-	$(AR) rc libMyPeri.a led.o button.o buzzer.o fnd.o lcdtext.o colorled.o temp.o 
+libMyPeri.a:	 led.o button.o buzzer.o fnd.o lcdtext.o colorled.o temp.o accelMagGyro.o
+	$(AR) rc libMyPeri.a led.o button.o buzzer.o fnd.o lcdtext.o colorled.o temp.o accelMagGyro.o
 
 led.o:	led.h led.c
 	$(CC) led.c -o led.o -c
@@ -25,12 +25,15 @@ lcdtext.o:	lcdtext.h lcdtext.c
 colorled.o:	colorled.h colorled.c
 	$(CC) colorled.c -o colorled.o -c
 
-temp.o: temp.h temp.c
+temp.o:	temp.h temp.c
 	$(CC) temp.c -o temp.o -c
 
-temptest1:	temptest.c temp.h libMyPeri.a
-	$(CC) temptest.c -o temptest1 -l MyPeri -L.
-	scp temptest1 ecube@192.168.219.121:/home/ecube 
+accelMagGyro.o:	accelMagGyro.h accelMagGyro.c
+	$(CC) accelMagGyro.c -o accelMagGyro.o -c
+
+accelMagGyrotest1:	accelMagGyrotest.c accelMagGyro.h libMyPeri.a
+	$(CC) accelMagGyrotest.c -o accelMagGyrotest1 -l MyPeri -L.
+	scp accelMagGyrotest1 ecube@192.168.219.100:/home/ecube 
 	
 clean:
 	rm *.o -rf
@@ -39,3 +42,4 @@ clean:
 	rm lcdtexttest1 -rf
 	rm colorledtest1 -rf
 	rm temptest1 -rf
+	rm accelMagGyrotest1 -rf
