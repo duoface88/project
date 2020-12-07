@@ -19,9 +19,10 @@ close(fd);
 fp = fopen (ACCELPATH "data", "rt");
 int accel[3];
 fscanf(fp,"%d, %d, %d",&accel[0],&accel[1],&accel[2]);
-printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
+//printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
+int accelnum = abs(accel[0]); //////////////절댓값으로 만들어서 리턴함
 fclose(fp);
-return 0;
+return accelnum;
 }
 
 int curMag(void)
@@ -48,9 +49,10 @@ close(fd);
 fp = fopen (GYROPATH "data", "rt");
 int gyro[3];
 fscanf(fp,"%d, %d, %d",&gyro[0],&gyro[1],&gyro[2]);
-printf ("I read Gyroscope %d, %d, %d\r\n",gyro[0],gyro[1],gyro[2]);
+//printf ("I read Gyroscope %d, %d, %d\r\n",gyro[0],gyro[1],gyro[2]);
+int gyronum = abs(gyro[1]); //////////////절댓값으로 만들어서 리턴함
 fclose(fp);
-return 0;
+return gyronum;
 }
 
 
