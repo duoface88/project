@@ -45,7 +45,7 @@ returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
 
 if(returnValue>0)
 {
-	
+
 //printf("msgRx.keyInput는 %d이고 msgRx.pressed는 %d이다\n\r",msgRx.keyInput,msgRx.pressed);
 
 switch(msgRx.keyInput)
