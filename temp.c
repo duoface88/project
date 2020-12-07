@@ -33,10 +33,10 @@ return file;
 
 char * spi_read_lm74(int file)
 {
-int len;
+int len1;
 memset(gbuf, 0, sizeof( gbuf));
-len = read(file, gbuf, 2); //Read two byte!
-if (len !=2)
+len1 = read(file, gbuf, 2); //Read two byte!
+if (len1 !=2)
 {
 perror("read error");
 return NULL;
