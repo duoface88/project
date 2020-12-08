@@ -70,23 +70,23 @@ void MainInit(void)	//메인문 Init함수
 	buzzerEnable(0);		//부저 OFF
 	ledLibInit();			//led 이닛
 	pwmLedInit();			//colorled 이닛
-			pwmSetPercent(20,0);		//R 
+			pwmSetPercent(20,2);		//R 
 			pwmSetPercent(20,1);    	//G ==>약한 하얀색 출력 
-			pwmSetPercent(20,2);		//B
+			pwmSetPercent(20,0);		//B
 	fndOff();					//fnd OFF
 }
 /***********************************/
 void* Blinkcolorled(void *arg){				//정답일경우 초록불 잠깐 점등하는 쓰레드
 		    pwmLedInit();
-			pwmSetPercent(0,0);		//R
+			pwmSetPercent(0,2);		//R
 			pwmSetPercent(50,1);    //G ==>초록색 ON  (빛성분몇퍼센트, 123중하나)
-			pwmSetPercent(0,2);		//B
+			pwmSetPercent(0,0);		//B
 			
 				usleep(250000);		//잠시동안 불켜짐
 			
-			pwmSetPercent(0,0);		//R
+			pwmSetPercent(0,2);		//R
 			pwmSetPercent(0,1);    	//G ==>초록색 ON  (빛성분몇퍼센트, 123중하나)
-			pwmSetPercent(0,2);		//B
+			pwmSetPercent(0,0);		//B
 }
 /***********************************/
 void* returnaccres(void *arg){				//키트 툭치는 이벤트 측정하는 가속도측정 쓰레드
@@ -435,15 +435,15 @@ while(!(Acount==5))										//메뉴버튼입력 => 게임 실행
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			pwmLedInit();
-			pwmSetPercent(100,0);		//R ==>빨강색 ON
+			pwmSetPercent(100,2);		//R ==>빨강색 ON
 			pwmSetPercent(0,1);    		//G   
-			pwmSetPercent(0,2);			//B
+			pwmSetPercent(0,0);			//B
 
 			usleep(250000);				//잠시동안 불켜짐
 			
-			pwmSetPercent(0,0);			//R
+			pwmSetPercent(0,2);			//R
 			pwmSetPercent(0,1);			//G ==>colorled OFF
-			pwmSetPercent(0,2);			//B
+			pwmSetPercent(0,0);			//B
 			
 			while(!(retthval==1))
 			{
