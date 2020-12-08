@@ -1,15 +1,15 @@
-#ifndef _BUZZER_H_
-#define _BUZZER_H_
+#ifndef _BUTTON_H_
+#define _BUTTON_H_
+#define MESSAGE_ID 125
+typedef struct
+{
+long int messageNum;
+int keyInput;
+int pressed;
+} BUTTON_MSG_T;
 
-int dolemi(int melody);
-int findBuzzerSysPath(void);
-void doHelp(void);
-int buzzerInit(void);
-int buzzerExit(void);
-void buzzerEnable(int);
-void setFrequency(int);
-int buzzerInit(void);
-int buzzerExit(void);
-
+int buttonInit(void);
+int probeButtonPath(char *newPath);
+int buttonExit(void);
+static void* buttonThFunc(void*a);
 #endif
-
