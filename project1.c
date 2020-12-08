@@ -263,7 +263,26 @@ if(returnValue)											//버튼눌리면 => 메시지 받음
 
 int main(void)
 {
+	// 여기서부터 lcd 관련 선언
+	int screen_width;
+	int screen_height;
+	int bits_per_pixel;
+	int line_length;
+	int cols = 0, rows = 0;
+	char *data;
+
 	MainInit();			//모든 장치 INIT			//프로그램 실행
+
+	// 여기서부터 lcd 관련
+	if( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0){
+		printf("fb init failed\r\n");
+		return 0;
+	}
+
+	fb_clear();
+	fb_write(data, cols, rows);
+	close_bmp();
+	fb_close();
 	
 	char aa[16]={ "welcome to 369"};
 	char bb[16]={"                  "};

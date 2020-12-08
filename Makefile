@@ -4,8 +4,8 @@ AR = arm-linux-gnueabi-ar
 all: libMyPeri.a project1
 
 
-libMyPeri.a:	 led.o button.o buzzer.o fnd.o lcdtext.o colorled.o temp.o accelMagGyro.o
-	$(AR) rc libMyPeri.a led.o button.o buzzer.o fnd.o lcdtext.o colorled.o temp.o accelMagGyro.o
+libMyPeri.a:	 led.o button.o buzzer.o fnd.o lcdtext.o colorled.o temp.o accelMagGyro.o libbmp.o libfbdev.o
+	$(AR) rc libMyPeri.a led.o button.o buzzer.o fnd.o lcdtext.o colorled.o temp.o accelMagGyro.o libbmp.o libfbdev.o
 
 led.o:	led.h led.c
 	$(CC) led.c -o led.o -c
@@ -31,9 +31,15 @@ temp.o:	temp.h temp.c
 accelMagGyro.o:	accelMagGyro.h accelMagGyro.c
 	$(CC) accelMagGyro.c -o accelMagGyro.o -c
 
+libbmp.o: libbmp.h bitmapFileHeader.h libbmp.c
+	$(CC) libbmp.c -o libbmp.o -c
+
+libfbdev.o : libfbdev.h  libfbdev.c
+	$(CC) libfbdev.c -o libfbdev.o -c
+
 project1:	project1.c libMyPeri.a
 	$(CC) project1.c -lpthread -o project1 -l MyPeri -L.
-	scp project1 ecube@192.168.219.180:/home/ecube 
+	# scp project1 ecube@192.168.219.180:/home/ecube 
 	
 clean:
 	rm *.o -rf
