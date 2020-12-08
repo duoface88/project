@@ -25,7 +25,7 @@ perror(" Args number is less than 2\n");
 return 1;
 }
 linenum = lineFlag;
-printf("linenum :%d\n", linenum );
+//printf("linenum :%d\n", linenum );
 if ( linenum  == 1)
 stlcd.cmdData = CMD_DATA_WRITE_LINE_1;
 else if ( linenum == 2)
