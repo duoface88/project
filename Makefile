@@ -1,7 +1,7 @@
 CC = arm-linux-gnueabi-gcc
 AR = arm-linux-gnueabi-ar
 
-all: libMyPeri.a project
+all: libMyPeri.a project1
 
 
 libMyPeri.a:	 led.o button.o buzzer.o fnd.o lcdtext.o colorled.o temp.o accelMagGyro.o
@@ -31,9 +31,9 @@ temp.o:	temp.h temp.c
 accelMagGyro.o:	accelMagGyro.h accelMagGyro.c
 	$(CC) accelMagGyro.c -o accelMagGyro.o -c
 
-project:	project.c libMyPeri.a
-	$(CC) project.c -o project -l MyPeri -L.
-	scp project ecube@192.168.219.180:/home/ecube 
+project1:	project1.c libMyPeri.a
+	$(CC) project1.c -o project1 -l MyPeri -L.
+	scp project1 ecube@192.168.219.180:/home/ecube 
 	
 clean:
 	rm *.o -rf
@@ -44,3 +44,4 @@ clean:
 	rm temptest1 -rf
 	rm accelMagGyrotest1 -rf
 	rm project -rf
+	rm project1 -rf
