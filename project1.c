@@ -78,9 +78,9 @@ void MainInit(void)	//메인문 Init함수
 /***********************************/
 void* Blinkcolorled(void *arg){				//정답일경우 초록불 잠깐 점등하는 쓰레드
 		    pwmLedInit();
-			pwmSetPercent(0,2);		//R
-			pwmSetPercent(50,1);    //G ==>초록색 ON  (빛성분몇퍼센트, 123중하나)
-			pwmSetPercent(0,0);		//B
+			pwmSetPercent(0,2);			//R
+			pwmSetPercent(100,1);		//G ==>초록색 ON  (빛성분몇퍼센트, 123중하나)
+			pwmSetPercent(0,0);			//B
 			
 				usleep(250000);		//잠시동안 불켜짐
 			
@@ -167,9 +167,9 @@ while(1)
 			upsidedown=1;				//upsidedown변수 1로 바꿈
 			printf("뒤 집 어 짐 \n");  //움직임 출력
 			
-			pwmSetPercent(0,0);		//
-			pwmSetPercent(0,1);    	//  colorled 끄기
 			pwmSetPercent(0,2);		//
+			pwmSetPercent(0,1);    	//  colorled 끄기
+			pwmSetPercent(0,0);		//
 			fndOff();	
 			result2=0;						//자이로값 차를 0으로 초기화
 			
@@ -263,26 +263,7 @@ if(returnValue)											//버튼눌리면 => 메시지 받음
 
 int main(void)
 {
-	// 여기서부터 lcd 관련 선언
-	int screen_width;
-	int screen_height;
-	int bits_per_pixel;
-	int line_length;
-	int cols = 0, rows = 0;
-	char *data;
-
 	MainInit();			//모든 장치 INIT			//프로그램 실행
-
-	// 여기서부터 lcd 관련
-	if( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0){
-		printf("fb init failed\r\n");
-		return 0;
-	}
-
-	fb_clear();
-	fb_write(data, cols, rows);
-	close_bmp();
-	fb_close();
 	
 	char aa[16]={ "welcome to 369"};
 	char bb[16]={"                  "};
@@ -439,7 +420,7 @@ while(!(Acount==5))										//메뉴버튼입력 => 게임 실행
 			pwmSetPercent(0,1);    		//G   
 			pwmSetPercent(0,0);			//B
 
-			usleep(250000);				//잠시동안 불켜짐
+			usleep(800000);				//잠시동안 불켜짐
 			
 			pwmSetPercent(0,2);			//R
 			pwmSetPercent(0,1);			//G ==>colorled OFF
