@@ -32,7 +32,7 @@ accelMagGyro.o:	accelMagGyro.h accelMagGyro.c
 	$(CC) accelMagGyro.c -o accelMagGyro.o -c
 
 project1:	project1.c libMyPeri.a
-	$(CC) project1.c -o project1 -l MyPeri -L.
+	$(CC) project1.c -lpthread -o project1 -l MyPeri -L.
 	scp project1 ecube@192.168.219.180:/home/ecube 
 	
 clean:
