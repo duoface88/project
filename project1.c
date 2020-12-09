@@ -203,6 +203,7 @@ void* Buzzercount(void *arg)  //3..2...1. GO
 	usleep(1000000);
 	buzzerEnable(0);
 	//////////////////////////////삐이이이이--
+	;
 }
 /***********************************/
 void* WhatButton(void *arg)						//버튼처리쓰레드
@@ -278,7 +279,7 @@ int main(void)
     sleep(1);
     ledLibRaw(0x00);                             
     
-    buzzerEnable(1);
+	buzzerEnable(1);
 	setFrequency(dolemi(0));
 	usleep(500*500);
 	setFrequency(dolemi(2));
@@ -450,7 +451,7 @@ while(!(Acount==5))										//메뉴버튼입력 => 게임 실행
 				printf("Thread Create Error: [%d]\n", err55);						//
 			} 																												//
 /////////////////////////////////////////////////////////////////////////////////////////////////////           						
-			usleep(200000);
+			usleep(400000);
 			pass=1;												//다음 가속도값 받기위한 준비완료
 			result1 = 0;										//가속도차이값 초기화
 			
